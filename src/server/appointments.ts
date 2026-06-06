@@ -5,10 +5,13 @@ import { redirect } from "next/navigation";
 import { requireAuth, requireRole } from "@/lib/rbac";
 import { prisma } from "@/lib/prisma";
 import { getSetting } from "@/lib/site-data";
+import { logAudit, getClientIp } from "@/lib/audit";
 import {
   notifyAppointmentRequested,
   notifyAppointmentConfirmed,
 } from "@/lib/email";
+
+const CONSENT_VERSION = "1.0";
 
 function str(v: FormDataEntryValue | null) {
   return String(v ?? "").trim();
@@ -66,7 +69,8 @@ export async function requestAppointment(locale: string, formData: FormData) {
   const slotId = str(formData.get("slotId"));
   const pricingId = str(formData.get("pricingId"));
   const note = str(formData.get("note"));
-  if (!slotId || !pricingId) redirect(`/${locale}/booking`);
+  const consent = str(formData.get("consent")) === "on";
+  if (!slotId || !pricingId || !consent) redirect(`/${locale}/booking`);
 
   const [slot, pricing] = await Promise.all([
     prisma.availabilitySlot.findUnique({ where: { id: slotId } }),
@@ -109,6 +113,25 @@ export async function requestAppointment(locale: string, formData: FormData) {
     return appt;
   });
 
+  // KVKK: onam kaydı (sürüm + IP)
+  const ip = await getClientIp();
+  for (const type of ["COUNSELING_CONTRACT", "KVKK"] as const) {
+    const existing = await prisma.consent.findFirst({
+      where: { userId: user.id, type, version: CONSENT_VERSION },
+    });
+    if (!existing) {
+      await prisma.consent.create({
+        data: { userId: user.id, type, version: CONSENT_VERSION, ipAddress: ip },
+      });
+    }
+  }
+  await logAudit({
+    userId: user.id,
+    action: "APPOINTMENT_REQUEST",
+    entity: "Appointment",
+    entityId: appointment.id,
+  });
+
   if (user.email) {
     const counselorEmail = await getSetting("contactEmail");
     await notifyAppointmentRequested({
@@ -145,6 +168,12 @@ export async function confirmPaymentAndAppointment(
       where: { id: appointmentId },
       data: { status: "CONFIRMED" },
     });
+  });
+  await logAudit({
+    userId: staff.id,
+    action: "PAYMENT_CONFIRM",
+    entity: "Appointment",
+    entityId: appointmentId,
   });
   await sendConfirmationEmail(appointmentId);
   revalidatePath("/[locale]/(admin)/admin/appointments", "page");

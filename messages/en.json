@@ -151,6 +151,8 @@
     "note": "Note (optional)",
     "notePlaceholder": "Anything you'd like to briefly share about the session...",
     "submit": "Request appointment",
+    "consent": "I have read and accept the Online Counseling Agreement and the Data Protection (KVKK) Notice.",
+    "consentRequired": "You must accept the agreement to continue.",
     "free": "Free",
     "paymentNote": "For paid sessions, payment is coordinated via WhatsApp after your appointment request.",
     "successTitle": "Your appointment request was received",

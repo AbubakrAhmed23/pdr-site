@@ -113,6 +113,11 @@ export default async function BookingPage({
               <Textarea id="note" name="note" rows={3} placeholder={t("notePlaceholder")} />
             </div>
 
+            <label className="flex items-start gap-2 text-sm">
+              <input type="checkbox" name="consent" required className="mt-1" />
+              <span>{t("consent")}</span>
+            </label>
+
             <p className="text-sm text-muted-foreground">{t("paymentNote")}</p>
             <SubmitButton size="lg">{t("submit")}</SubmitButton>
           </form>

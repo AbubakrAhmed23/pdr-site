@@ -112,6 +112,34 @@ async function main() {
       valueEn:
         "Reach out with any questions. Appointment and payment coordination is handled via WhatsApp.",
     },
+    {
+      key: "legal.privacy",
+      valueTr:
+        "Gizlilik Politikası\n\nKişisel verileriniz yalnızca danışmanlık hizmetinin sunulması amacıyla işlenir ve üçüncü kişilerle paylaşılmaz. Görüşmeler gizli tutulur. Bağlantılar SSL/TLS ile şifrelenir; hassas veriler şifreli olarak saklanır.\n\n(Bu metin bir taslaktır ve yürürlüğe girmeden önce bir hukuk danışmanı tarafından gözden geçirilmelidir.)",
+      valueEn:
+        "Privacy Policy\n\nYour personal data is processed solely to provide the counseling service and is not shared with third parties. Sessions are kept confidential. Connections are encrypted via SSL/TLS; sensitive data is stored encrypted.\n\n(This text is a draft and should be reviewed by a legal advisor before going live.)",
+    },
+    {
+      key: "legal.kvkk",
+      valueTr:
+        "KVKK Aydınlatma Metni\n\n6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında veri sorumlusu sıfatıyla; kimlik, iletişim ve sağlıkla ilgili (özel nitelikli) verileriniz, açık rızanıza dayanarak danışmanlık hizmetinin yürütülmesi amacıyla işlenir. Verileriniz gerekli teknik ve idari tedbirlerle korunur. KVKK madde 11 kapsamındaki haklarınızı kullanmak için bizimle iletişime geçebilirsiniz.\n\n(Bu metin bir taslaktır; bir hukuk danışmanı tarafından gözden geçirilmelidir.)",
+      valueEn:
+        "Data Protection (KVKK) Notice\n\nUnder Turkey's Law No. 6698, as data controller we process your identity, contact and health-related (special-category) data based on your explicit consent, to deliver the counseling service. Your data is protected with appropriate technical and administrative measures. You may contact us to exercise your rights under Article 11.\n\n(This text is a draft and should be reviewed by a legal advisor.)",
+    },
+    {
+      key: "legal.terms",
+      valueTr:
+        "Kullanım Koşulları\n\nBu platform çevrimiçi psikolojik danışmanlık ve rehberlik hizmeti sunar; tıbbi teşhis, tedavi veya ilaç önerisi içermez. Acil/kriz durumlarında platform uygun değildir; lütfen 112'yi arayın. Randevu ve ödeme koşulları danışma sözleşmesinde belirtilir.\n\n(Bu metin bir taslaktır; bir hukuk danışmanı tarafından gözden geçirilmelidir.)",
+      valueEn:
+        "Terms of Use\n\nThis platform provides online psychological counseling and guidance; it does not include medical diagnosis, treatment, or medication advice. It is not suitable for emergencies/crises; please call 112. Appointment and payment terms are set out in the counseling agreement.\n\n(This text is a draft and should be reviewed by a legal advisor.)",
+    },
+    {
+      key: "legal.contract",
+      valueTr:
+        "Çevrimiçi Psikolojik Danışma Sözleşmesi\n\nBu sözleşme, danışan ile psikolojik danışman arasındaki çevrimiçi görüşmelerin çerçevesini belirler: ücret, süre, seans sıklığı, ödeme yöntemi (WhatsApp üzerinden koordinasyon) ve sürecin avantaj/dezavantajları. Görüşmeler gizlidir. Danışman; kendine/başkasına zarar riski, 18 yaş altı, madde kullanımı, ağır kriz veya psikotik tablo durumlarında çevrimiçi danışma vermez ve uygun birime yönlendirir. İlaç/tıbbi öneri verilmez.\n\n(Bu metin bir taslaktır; bir hukuk danışmanı tarafından gözden geçirilmelidir.)",
+      valueEn:
+        "Online Counseling Agreement\n\nThis agreement sets the framework for online sessions between client and counselor: fee, duration, session frequency, payment method (coordinated via WhatsApp) and the advantages/limitations of the process. Sessions are confidential. The counselor does not provide online counseling in cases of risk of harm to self/others, under 18, substance use, severe crisis or psychosis, and will refer to the appropriate service. No medication/medical advice is given.\n\n(This text is a draft and should be reviewed by a legal advisor.)",
+    },
   ];
   for (const c of content) {
     await prisma.siteContent.upsert({
