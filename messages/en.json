@@ -47,6 +47,52 @@
     "errorUnknown": "Something went wrong, please try again.",
     "passwordHint": "At least 8 characters"
   },
+  "About": {
+    "title": "About",
+    "subtitle": "Let's get to know each other",
+    "specialtiesTitle": "My areas of work",
+    "approachTitle": "My approach",
+    "ctaTitle": "Ready to work together?",
+    "cta": "Free intro call"
+  },
+  "Services": {
+    "title": "Services",
+    "subtitle": "Counseling options that suit you",
+    "areasTitle": "Areas of counseling",
+    "packagesTitle": "Sessions & fees",
+    "duration": "{minutes} minutes",
+    "free": "Free",
+    "book": "Book now",
+    "disclaimer": "All services fall under psychological counseling and guidance; they do not include medical diagnosis or treatment."
+  },
+  "Faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "What you might be wondering",
+    "q1": "How does online counseling work?",
+    "a1": "Sessions are held over a secure video connection at a pre-arranged appointment time.",
+    "q2": "How is payment made?",
+    "a2": "After your appointment request, payment and coordination are handled via WhatsApp.",
+    "q3": "Are sessions confidential?",
+    "a3": "Yes. All sessions are kept confidential in line with professional ethics and data-protection law.",
+    "q4": "Is this therapy/treatment?",
+    "a4": "No. The service is psychological counseling and guidance; it does not include medical diagnosis, treatment, or medication advice. Referrals to relevant specialists are made when necessary.",
+    "q5": "What should I do in an emergency?",
+    "a5": "In emergencies please call 112. This platform is not suitable for crisis/emergency intervention."
+  },
+  "Contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch",
+    "whatsapp": "Message on WhatsApp",
+    "email": "Email",
+    "whatsappMessage": "Hello, I'd like to learn more about your counseling services."
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Articles and resources",
+    "readMore": "Read more",
+    "empty": "No posts published yet.",
+    "backToBlog": "All posts"
+  },
   "Crisis": {
     "title": "Are you in an emergency?",
     "body": "If you have thoughts of harming yourself or others, please call emergency services (112) immediately. This platform is not suitable for emergency or crisis intervention.",

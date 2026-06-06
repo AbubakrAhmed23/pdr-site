@@ -47,6 +47,52 @@
     "errorUnknown": "Bir hata oluştu, lütfen tekrar deneyin.",
     "passwordHint": "En az 8 karakter"
   },
+  "About": {
+    "title": "Hakkımda",
+    "subtitle": "Tanışalım",
+    "specialtiesTitle": "Çalışma alanlarım",
+    "approachTitle": "Yaklaşımım",
+    "ctaTitle": "Birlikte çalışmaya hazır mısınız?",
+    "cta": "Ücretsiz tanışma görüşmesi"
+  },
+  "Services": {
+    "title": "Hizmetler",
+    "subtitle": "Size uygun danışmanlık seçenekleri",
+    "areasTitle": "Danışmanlık alanları",
+    "packagesTitle": "Seans ve ücretler",
+    "duration": "{minutes} dakika",
+    "free": "Ücretsiz",
+    "book": "Randevu al",
+    "disclaimer": "Tüm hizmetler psikolojik danışmanlık ve rehberlik kapsamındadır; tıbbi teşhis veya tedavi içermez."
+  },
+  "Faq": {
+    "title": "Sık Sorulan Sorular",
+    "subtitle": "Merak ettikleriniz",
+    "q1": "Online danışmanlık nasıl yapılır?",
+    "a1": "Görüşmeler güvenli bir video bağlantısı üzerinden, önceden belirlenen randevu saatinde gerçekleştirilir.",
+    "q2": "Ödeme nasıl yapılır?",
+    "a2": "Randevu talebinizin ardından ödeme ve koordinasyon WhatsApp üzerinden yapılır.",
+    "q3": "Görüşmeler gizli mi?",
+    "a3": "Evet. Tüm görüşmeler mesleki etik ve KVKK kapsamında gizli tutulur.",
+    "q4": "Bu hizmet terapi/tedavi mi?",
+    "a4": "Hayır. Sunulan hizmet psikolojik danışmanlık ve rehberliktir; tıbbi teşhis, tedavi veya ilaç önerisi içermez. Gerekli durumlarda ilgili uzmana yönlendirme yapılır.",
+    "q5": "Acil bir durumdaysam ne yapmalıyım?",
+    "a5": "Acil durumlarda lütfen 112'yi arayın. Bu platform kriz/acil müdahale için uygun değildir."
+  },
+  "Contact": {
+    "title": "İletişim",
+    "subtitle": "Bize ulaşın",
+    "whatsapp": "WhatsApp ile yazın",
+    "email": "E-posta",
+    "whatsappMessage": "Merhaba, danışmanlık hizmeti hakkında bilgi almak istiyorum."
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Yazılar ve kaynaklar",
+    "readMore": "Devamını oku",
+    "empty": "Henüz yazı yayınlanmadı.",
+    "backToBlog": "Tüm yazılar"
+  },
   "Crisis": {
     "title": "Acil bir durumda mısınız?",
     "body": "Kendinize veya bir başkasına zarar verme düşünceniz varsa lütfen vakit kaybetmeden 112 Acil Servis'i arayın. Bu platform acil/kriz müdahalesi için uygun değildir.",
