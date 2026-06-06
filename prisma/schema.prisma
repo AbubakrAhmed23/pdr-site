@@ -1,0 +1,241 @@
+// PDR Online Danışmanlık Platformu — veri modeli
+// Yasal not: "psikolojik danışmanlık/rehberlik" — terapi/tanı değil. KVKK: hassas alanlar şifreli.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  CLIENT
+  COUNSELOR
+  ADMIN
+}
+
+enum SessionType {
+  INTRO // ücretsiz 15 dk tanışma görüşmesi
+  INDIVIDUAL // ücretli bireysel danışmanlık seansı
+}
+
+enum AppointmentStatus {
+  REQUESTED // talep oluşturuldu, ödeme/onay bekliyor
+  CONFIRMED // danışman ödemeyi/uygunluğu onayladı
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum PaymentStatus {
+  PENDING // WhatsApp üzerinden bekleniyor
+  PAID // danışman manuel onayladı
+  REFUNDED
+  CANCELLED
+}
+
+enum RiskLevel {
+  LOW
+  MODERATE
+  HIGH
+  CRISIS
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum Locale {
+  TR
+  EN
+}
+
+enum ConsentType {
+  COUNSELING_CONTRACT // Çevrimiçi Psikolojik Danışma Sözleşmesi
+  KVKK // Aydınlatma + açık rıza
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String?
+  name          String?
+  phone         String?
+  role          Role      @default(CLIENT)
+  locale        Locale    @default(TR)
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  counselorProfile CounselorProfile?
+  appointments     Appointment[]     @relation("ClientAppointments")
+  assessments      Assessment[]
+  consents         Consent[]
+  blogPosts        BlogPost[]
+  auditLogs        AuditLog[]
+}
+
+model CounselorProfile {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  titleTr       String?
+  titleEn       String?
+  bioTr         String?  @db.Text
+  bioEn         String?  @db.Text
+  specialtiesTr String[] // uzmanlık alanları (danışmanlık konuları)
+  specialtiesEn String[]
+  photoUrl      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model AvailabilitySlot {
+  id          String       @id @default(cuid())
+  startsAt    DateTime
+  endsAt      DateTime
+  isBooked    Boolean      @default(false)
+  createdAt   DateTime     @default(now())
+  appointment Appointment?
+
+  @@index([startsAt])
+}
+
+model Appointment {
+  id           String            @id @default(cuid())
+  clientId     String
+  client       User              @relation("ClientAppointments", fields: [clientId], references: [id], onDelete: Cascade)
+  slotId       String?           @unique
+  slot         AvailabilitySlot? @relation(fields: [slotId], references: [id], onDelete: SetNull)
+  startsAt     DateTime
+  endsAt       DateTime
+  type         SessionType       @default(INDIVIDUAL)
+  status       AppointmentStatus @default(REQUESTED)
+  videoRoomUrl String?
+  clientNote   String?           @db.Text
+  payment      Payment?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  @@index([clientId])
+  @@index([startsAt])
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  appointmentId String        @unique
+  appointment   Appointment   @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  amount        Decimal       @db.Decimal(10, 2)
+  currency      String        @default("TRY")
+  status        PaymentStatus @default(PENDING)
+  whatsappRef   String? // WhatsApp ödeme koordinasyon notu/referansı
+  confirmedAt   DateTime?
+  confirmedById String? // ödemeyi onaylayan danışman/admin
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+// AI ön değerlendirme — KVKK özel nitelikli veri. transcript ve scores şifreli saklanır.
+model Assessment {
+  id                  String     @id @default(cuid())
+  userId              String?
+  user                User?      @relation(fields: [userId], references: [id], onDelete: SetNull)
+  locale              Locale     @default(TR)
+  status              String     @default("IN_PROGRESS") // IN_PROGRESS | COMPLETED
+  riskLevel           RiskLevel?
+  scoresEncrypted     String?    @db.Text // şifreli JSON: PHQ-9/GAD-7/DASS-21 skorları
+  transcriptEncrypted String?    @db.Text // şifreli sohbet dökümü
+  summary             String?    @db.Text // danışana/danışmana gösterilecek özet
+  routing             String? // stepped-care yönlendirme sonucu
+  sharedWithCounselor Boolean    @default(false)
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+
+  @@index([userId])
+}
+
+model Consent {
+  id               String      @id @default(cuid())
+  userId           String
+  user             User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type             ConsentType
+  version          String
+  acceptedAt       DateTime    @default(now())
+  ipAddress        String?
+  documentSnapshot String?     @db.Text // onaylanan metnin o anki hali
+
+  @@index([userId])
+}
+
+model BlogPost {
+  id          String     @id @default(cuid())
+  slug        String     @unique
+  titleTr     String
+  titleEn     String
+  excerptTr   String?    @db.Text
+  excerptEn   String?    @db.Text
+  contentTr   String     @db.Text
+  contentEn   String     @db.Text
+  coverImage  String?
+  status      PostStatus @default(DRAFT)
+  seoTitleTr  String?
+  seoTitleEn  String?
+  seoDescTr   String?
+  seoDescEn   String?
+  authorId    String?
+  author      User?      @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  publishedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([status, publishedAt])
+}
+
+// Admin'den düzenlenebilir çift dilli sayfa metinleri (key/value)
+model SiteContent {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  valueTr   String   @db.Text
+  valueEn   String   @db.Text
+  updatedAt DateTime @updatedAt
+}
+
+// Tek değerli ayarlar (whatsapp numarası, iletişim e-postası vb.)
+model Setting {
+  key       String   @id
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+}
+
+model Pricing {
+  id              String      @id @default(cuid())
+  nameTr          String
+  nameEn          String
+  descriptionTr   String?     @db.Text
+  descriptionEn   String?     @db.Text
+  sessionType     SessionType @default(INDIVIDUAL)
+  amount          Decimal     @db.Decimal(10, 2)
+  currency        String      @default("TRY")
+  durationMinutes Int         @default(50)
+  isActive        Boolean     @default(true)
+  sortOrder       Int         @default(0)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String // ör. ASSESSMENT_VIEW, PAYMENT_CONFIRM
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([entity, entityId])
+}

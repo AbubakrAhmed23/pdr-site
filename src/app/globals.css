@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/*
+  PDR Online Danışmanlık — tasarım sistemi.
+  Sakin, güven veren palet: yumuşak adaçayı/teal yeşili + sıcak nötr tonlar.
+*/
+
+:root {
+  --background: oklch(0.99 0.005 95);
+  --foreground: oklch(0.27 0.02 170);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.27 0.02 170);
+
+  --primary: oklch(0.55 0.07 175);
+  --primary-foreground: oklch(0.99 0.01 175);
+
+  --secondary: oklch(0.95 0.02 165);
+  --secondary-foreground: oklch(0.35 0.04 175);
+
+  --muted: oklch(0.96 0.008 120);
+  --muted-foreground: oklch(0.52 0.02 170);
+
+  --accent: oklch(0.9 0.05 80);
+  --accent-foreground: oklch(0.32 0.05 70);
+
+  --destructive: oklch(0.58 0.18 25);
+  --destructive-foreground: oklch(0.99 0.01 25);
+
+  --border: oklch(0.9 0.01 160);
+  --input: oklch(0.9 0.01 160);
+  --ring: oklch(0.55 0.07 175);
+
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: oklch(0.2 0.02 175);
+  --foreground: oklch(0.95 0.01 150);
+  --card: oklch(0.24 0.02 175);
+  --card-foreground: oklch(0.95 0.01 150);
+  --primary: oklch(0.7 0.09 170);
+  --primary-foreground: oklch(0.2 0.02 175);
+  --secondary: oklch(0.3 0.03 175);
+  --secondary-foreground: oklch(0.95 0.01 150);
+  --muted: oklch(0.3 0.02 175);
+  --muted-foreground: oklch(0.7 0.02 160);
+  --accent: oklch(0.35 0.05 80);
+  --accent-foreground: oklch(0.95 0.02 80);
+  --destructive: oklch(0.6 0.18 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  --border: oklch(0.32 0.02 175);
+  --input: oklch(0.32 0.02 175);
+  --ring: oklch(0.7 0.09 170);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

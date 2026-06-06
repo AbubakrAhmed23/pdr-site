@@ -1,0 +1,90 @@
+{
+  "Meta": {
+    "title": "Online Psikolojik Danışmanlık & Rehberlik",
+    "description": "Uzman psikolojik danışman ile çevrimiçi bireysel danışmanlık. Güvenli, gizli ve size özel görüşmeler."
+  },
+  "Nav": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımda",
+    "services": "Hizmetler",
+    "assessment": "Ön Değerlendirme",
+    "blog": "Blog",
+    "faq": "S.S.S.",
+    "contact": "İletişim",
+    "booking": "Randevu Al",
+    "login": "Giriş Yap",
+    "register": "Kayıt Ol",
+    "dashboard": "Panelim",
+    "admin": "Yönetim",
+    "logout": "Çıkış Yap"
+  },
+  "Common": {
+    "learnMore": "Daha Fazla",
+    "getStarted": "Hemen Başla",
+    "loading": "Yükleniyor...",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "submit": "Gönder",
+    "back": "Geri"
+  },
+  "Auth": {
+    "loginTitle": "Giriş Yap",
+    "loginSubtitle": "Hesabınıza giriş yaparak panelinize erişin.",
+    "registerTitle": "Kayıt Ol",
+    "registerSubtitle": "Ücretsiz hesap oluşturun ve danışmanlık sürecine başlayın.",
+    "name": "Ad Soyad",
+    "email": "E-posta",
+    "password": "Parola",
+    "loginButton": "Giriş Yap",
+    "registerButton": "Hesap Oluştur",
+    "noAccount": "Hesabınız yok mu?",
+    "haveAccount": "Zaten hesabınız var mı?",
+    "goRegister": "Kayıt olun",
+    "goLogin": "Giriş yapın",
+    "errorInvalid": "E-posta veya parola hatalı.",
+    "errorExists": "Bu e-posta ile zaten bir hesap var.",
+    "errorValidation": "Lütfen bilgileri kontrol edin (parola en az 8 karakter).",
+    "errorUnknown": "Bir hata oluştu, lütfen tekrar deneyin.",
+    "passwordHint": "En az 8 karakter"
+  },
+  "Crisis": {
+    "title": "Acil bir durumda mısınız?",
+    "body": "Kendinize veya bir başkasına zarar verme düşünceniz varsa lütfen vakit kaybetmeden 112 Acil Servis'i arayın. Bu platform acil/kriz müdahalesi için uygun değildir.",
+    "cta": "Acil destek hatları"
+  },
+  "Home": {
+    "heroBadge": "Çevrimiçi · Gizli · Bireye Özel",
+    "heroTitle": "Kendinizi anlamaya bugün başlayın",
+    "heroSubtitle": "Alanında uzman psikolojik danışman ile çevrimiçi bireysel danışmanlık ve rehberlik. Güvenli ve gizli bir ortamda, size uygun zamanda.",
+    "heroCtaPrimary": "Ücretsiz tanışma görüşmesi al",
+    "heroCtaSecondary": "AI ön değerlendirme",
+    "trustTitle": "Neden buradasınız güvende?",
+    "trust1Title": "Etik ve gizlilik",
+    "trust1Body": "Tüm görüşmeler KVKK'ya uygun şekilde, şifreli ve gizli yürütülür.",
+    "trust2Title": "Uzman danışman",
+    "trust2Body": "Marmara Üniversitesi PDR lisans ve yüksek lisans eğitimli psikolojik danışman.",
+    "trust3Title": "Size uygun zaman",
+    "trust3Body": "Çevrimiçi görüşme ile dilediğiniz yerden, esnek randevu saatleriyle.",
+    "howTitle": "Nasıl çalışır?",
+    "how1": "Kayıt olun ve kısa ön değerlendirmeyi doldurun",
+    "how2": "Ücretsiz 15 dakikalık tanışma görüşmesi yapın",
+    "how3": "Size uygun randevuyu seçin, WhatsApp'tan ödemeyi tamamlayın",
+    "how4": "Çevrimiçi görüşmenizi gerçekleştirin",
+    "servicesTitle": "Danışmanlık alanları",
+    "ctaTitle": "İlk adımı atmaya hazır mısınız?",
+    "ctaBody": "Ücretsiz tanışma görüşmesi ile başlayın; sürecin size uygun olup olmadığını birlikte değerlendirelim.",
+    "disclaimer": "Bu hizmet psikolojik danışmanlık ve rehberlik kapsamındadır; tıbbi teşhis, tedavi veya ilaç önerisi içermez."
+  },
+  "Footer": {
+    "tagline": "Çevrimiçi psikolojik danışmanlık ve rehberlik",
+    "navTitle": "Sayfalar",
+    "legalTitle": "Yasal",
+    "privacy": "Gizlilik Politikası",
+    "kvkk": "KVKK Aydınlatma Metni",
+    "terms": "Kullanım Koşulları",
+    "contract": "Çevrimiçi Danışma Sözleşmesi",
+    "contactTitle": "İletişim",
+    "rights": "Tüm hakları saklıdır.",
+    "disclaimer": "Bu web sitesi acil durum/kriz müdahalesi sağlamaz. Acil durumlarda 112'yi arayın."
+  }
+}

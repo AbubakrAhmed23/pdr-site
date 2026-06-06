@@ -1,0 +1,90 @@
+{
+  "Meta": {
+    "title": "Online Psychological Counseling & Guidance",
+    "description": "Online individual counseling with an expert psychological counselor. Secure, confidential and personalized sessions."
+  },
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "assessment": "Pre-assessment",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "booking": "Book a Session",
+    "login": "Log in",
+    "register": "Sign up",
+    "dashboard": "My Panel",
+    "admin": "Admin",
+    "logout": "Log out"
+  },
+  "Common": {
+    "learnMore": "Learn more",
+    "getStarted": "Get started",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "back": "Back"
+  },
+  "Auth": {
+    "loginTitle": "Log in",
+    "loginSubtitle": "Log in to your account to access your panel.",
+    "registerTitle": "Sign up",
+    "registerSubtitle": "Create a free account and start your counseling journey.",
+    "name": "Full name",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Log in",
+    "registerButton": "Create account",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "goRegister": "Sign up",
+    "goLogin": "Log in",
+    "errorInvalid": "Incorrect email or password.",
+    "errorExists": "An account with this email already exists.",
+    "errorValidation": "Please check your details (password must be at least 8 characters).",
+    "errorUnknown": "Something went wrong, please try again.",
+    "passwordHint": "At least 8 characters"
+  },
+  "Crisis": {
+    "title": "Are you in an emergency?",
+    "body": "If you have thoughts of harming yourself or others, please call emergency services (112) immediately. This platform is not suitable for emergency or crisis intervention.",
+    "cta": "Emergency support lines"
+  },
+  "Home": {
+    "heroBadge": "Online · Confidential · Personalized",
+    "heroTitle": "Start understanding yourself today",
+    "heroSubtitle": "Online individual psychological counseling and guidance with an expert counselor. In a safe and confidential setting, at a time that suits you.",
+    "heroCtaPrimary": "Get a free intro call",
+    "heroCtaSecondary": "AI pre-assessment",
+    "trustTitle": "Why you're safe here",
+    "trust1Title": "Ethics & confidentiality",
+    "trust1Body": "All sessions are conducted confidentially and encrypted, in line with data-protection law.",
+    "trust2Title": "Expert counselor",
+    "trust2Body": "Psychological counselor with a bachelor's and master's in Guidance & Counseling from Marmara University.",
+    "trust3Title": "On your schedule",
+    "trust3Body": "Online sessions from anywhere, with flexible appointment times.",
+    "howTitle": "How it works",
+    "how1": "Sign up and complete the short pre-assessment",
+    "how2": "Have a free 15-minute intro call",
+    "how3": "Choose a suitable appointment and complete payment via WhatsApp",
+    "how4": "Attend your online session",
+    "servicesTitle": "Areas of counseling",
+    "ctaTitle": "Ready to take the first step?",
+    "ctaBody": "Start with a free intro call and let's assess together whether this process is right for you.",
+    "disclaimer": "This service falls under psychological counseling and guidance; it does not include medical diagnosis, treatment, or medication advice."
+  },
+  "Footer": {
+    "tagline": "Online psychological counseling and guidance",
+    "navTitle": "Pages",
+    "legalTitle": "Legal",
+    "privacy": "Privacy Policy",
+    "kvkk": "Data Protection Notice",
+    "terms": "Terms of Use",
+    "contract": "Online Counseling Agreement",
+    "contactTitle": "Contact",
+    "rights": "All rights reserved.",
+    "disclaimer": "This website does not provide emergency/crisis intervention. In emergencies, call 112."
+  }
+}
