@@ -4,9 +4,41 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAuth, requireRole } from "@/lib/rbac";
 import { prisma } from "@/lib/prisma";
+import { getSetting } from "@/lib/site-data";
+import {
+  notifyAppointmentRequested,
+  notifyAppointmentConfirmed,
+} from "@/lib/email";
 
 function str(v: FormDataEntryValue | null) {
   return String(v ?? "").trim();
+}
+
+function dateLabel(date: Date, locale: string) {
+  return new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-US", {
+    dateStyle: "full",
+    timeStyle: "short",
+  }).format(date);
+}
+
+function packageLabel(type: string, locale: string) {
+  if (type === "INTRO") return locale === "tr" ? "Tanışma Görüşmesi" : "Intro Call";
+  return locale === "tr" ? "Bireysel Danışmanlık" : "Individual Counseling";
+}
+
+async function sendConfirmationEmail(appointmentId: string) {
+  const appt = await prisma.appointment.findUnique({
+    where: { id: appointmentId },
+    include: { client: { select: { email: true, locale: true } } },
+  });
+  if (!appt?.client.email) return;
+  const loc = appt.client.locale === "EN" ? "en" : "tr";
+  await notifyAppointmentConfirmed({
+    clientEmail: appt.client.email,
+    dateLabel: dateLabel(appt.startsAt, loc),
+    packageLabel: packageLabel(appt.type, loc),
+    videoUrl: appt.videoRoomUrl,
+  });
 }
 
 // ── Müsaitlik (admin) ─────────────────────────────────────────────
@@ -77,6 +109,17 @@ export async function requestAppointment(locale: string, formData: FormData) {
     return appt;
   });
 
+  if (user.email) {
+    const counselorEmail = await getSetting("contactEmail");
+    await notifyAppointmentRequested({
+      clientEmail: user.email,
+      counselorEmail,
+      dateLabel: dateLabel(slot.startsAt, locale),
+      packageLabel: locale === "en" ? pricing.nameEn : pricing.nameTr,
+      needsPayment: amount > 0,
+    });
+  }
+
   redirect(`/${locale}/booking/${appointment.id}`);
 }
 
@@ -103,6 +146,7 @@ export async function confirmPaymentAndAppointment(
       data: { status: "CONFIRMED" },
     });
   });
+  await sendConfirmationEmail(appointmentId);
   revalidatePath("/[locale]/(admin)/admin/appointments", "page");
 }
 
@@ -112,6 +156,7 @@ export async function confirmAppointment(appointmentId: string) {
     where: { id: appointmentId },
     data: { status: "CONFIRMED" },
   });
+  await sendConfirmationEmail(appointmentId);
   revalidatePath("/[locale]/(admin)/admin/appointments", "page");
 }
 
