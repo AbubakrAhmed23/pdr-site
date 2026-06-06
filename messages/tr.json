@@ -93,6 +93,23 @@
     "empty": "Henüz yazı yayınlanmadı.",
     "backToBlog": "Tüm yazılar"
   },
+  "Dashboard": {
+    "title": "Panelim",
+    "welcome": "Merhaba, {name}",
+    "myAppointments": "Randevularım",
+    "noAppointments": "Henüz randevunuz yok.",
+    "bookNew": "Yeni randevu al",
+    "join": "Görüşmeye katıl",
+    "pay": "WhatsApp'tan öde",
+    "cancel": "İptal et",
+    "videoPending": "Görüşme linki yakında eklenecek",
+    "paymentPending": "Ödeme bekliyor",
+    "paymentPaid": "Ödendi",
+    "assessmentsTitle": "Ön Değerlendirmelerim",
+    "noAssessments": "Henüz ön değerlendirme yapmadınız.",
+    "startAssessment": "Ön değerlendirme yap",
+    "accountTitle": "Hesap"
+  },
   "Booking": {
     "title": "Randevu Al",
     "subtitle": "Size uygun paketi ve saati seçin",

@@ -4,11 +4,6 @@ import { revalidatePath } from "next/cache";
 import { requireRole } from "@/lib/rbac";
 import { prisma } from "@/lib/prisma";
 import { revalidatePublic } from "@/lib/revalidate";
-import { signOut } from "@/auth";
-
-export async function signOutAction() {
-  await signOut({ redirectTo: "/" });
-}
 
 function splitList(value: FormDataEntryValue | null): string[] {
   return String(value ?? "")

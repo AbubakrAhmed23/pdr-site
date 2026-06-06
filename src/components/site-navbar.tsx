@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { Menu, X, HeartHandshake } from "lucide-react";
+import { Menu, X, HeartHandshake, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { signOutAction } from "@/server/auth-actions";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -18,10 +19,51 @@ const NAV_ITEMS = [
   { href: "/contact", key: "contact" },
 ] as const;
 
-export function SiteNavbar() {
+type NavUser = { name?: string | null; role: string } | null;
+
+export function SiteNavbar({ user }: { user: NavUser }) {
   const t = useTranslations("Nav");
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const isStaff = user?.role === "ADMIN" || user?.role === "COUNSELOR";
+
+  const authButtons = (
+    <>
+      {user ? (
+        <>
+          {isStaff && (
+            <Link href="/admin">
+              <Button variant="ghost" size="sm">
+                {t("admin")}
+              </Button>
+            </Link>
+          )}
+          <Link href="/dashboard">
+            <Button variant="ghost" size="sm">
+              {t("dashboard")}
+            </Button>
+          </Link>
+          <form action={signOutAction}>
+            <Button variant="outline" size="sm" type="submit">
+              <LogOut className="size-4" />
+              {t("logout")}
+            </Button>
+          </form>
+        </>
+      ) : (
+        <>
+          <Link href="/login">
+            <Button variant="ghost" size="sm">
+              {t("login")}
+            </Button>
+          </Link>
+          <Link href="/booking">
+            <Button size="sm">{t("booking")}</Button>
+          </Link>
+        </>
+      )}
+    </>
+  );
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
@@ -54,14 +96,7 @@ export function SiteNavbar() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <LocaleSwitcher />
-          <Link href="/login">
-            <Button variant="ghost" size="sm">
-              {t("login")}
-            </Button>
-          </Link>
-          <Link href="/booking">
-            <Button size="sm">{t("booking")}</Button>
-          </Link>
+          {authButtons}
         </div>
 
         <button
@@ -86,18 +121,9 @@ export function SiteNavbar() {
                 {t(item.key)}
               </Link>
             ))}
-            <div className="flex items-center justify-between gap-2 pt-2">
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
               <LocaleSwitcher />
-              <div className="flex gap-2">
-                <Link href="/login" onClick={() => setOpen(false)}>
-                  <Button variant="ghost" size="sm">
-                    {t("login")}
-                  </Button>
-                </Link>
-                <Link href="/booking" onClick={() => setOpen(false)}>
-                  <Button size="sm">{t("booking")}</Button>
-                </Link>
-              </div>
+              <div className="flex flex-wrap gap-2">{authButtons}</div>
             </div>
           </div>
         </div>

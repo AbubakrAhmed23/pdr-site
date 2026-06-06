@@ -13,7 +13,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { signOutAction } from "@/app/[locale]/(admin)/admin/actions";
+import { signOutAction } from "@/server/auth-actions";
 
 const ITEMS = [
   { href: "/admin", label: "Genel Bakış", icon: LayoutDashboard, exact: true },

@@ -1,9 +1,8 @@
 import { getCurrentUser } from "@/lib/rbac";
-import { CrisisBanner } from "@/components/crisis-banner";
 import { SiteNavbar } from "@/components/site-navbar";
 import { SiteFooter } from "@/components/site-footer";
 
-export default async function PublicLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -11,7 +10,6 @@ export default async function PublicLayout({
   const user = await getCurrentUser();
   return (
     <>
-      <CrisisBanner />
       <SiteNavbar user={user ? { name: user.name, role: user.role } : null} />
       <main className="flex-1">{children}</main>
       <SiteFooter />

@@ -93,6 +93,23 @@
     "empty": "No posts published yet.",
     "backToBlog": "All posts"
   },
+  "Dashboard": {
+    "title": "My Panel",
+    "welcome": "Hello, {name}",
+    "myAppointments": "My Appointments",
+    "noAppointments": "You don't have any appointments yet.",
+    "bookNew": "Book a new session",
+    "join": "Join session",
+    "pay": "Pay via WhatsApp",
+    "cancel": "Cancel",
+    "videoPending": "Session link will be added soon",
+    "paymentPending": "Payment pending",
+    "paymentPaid": "Paid",
+    "assessmentsTitle": "My Pre-assessments",
+    "noAssessments": "You haven't done a pre-assessment yet.",
+    "startAssessment": "Take pre-assessment",
+    "accountTitle": "Account"
+  },
   "Booking": {
     "title": "Book a Session",
     "subtitle": "Choose a package and a time that suits you",
