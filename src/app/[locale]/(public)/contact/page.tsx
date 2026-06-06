@@ -6,6 +6,9 @@ import { pickField } from "@/lib/locale-field";
 import { buildWhatsAppLink } from "@/lib/utils";
 import { MessageCircle, Mail } from "lucide-react";
 
+// DB içeriğine bağlı: istek anında render (admin düzenlemeleri anında yansır).
+export const dynamic = "force-dynamic";
+
 export default async function ContactPage({
   params,
 }: {

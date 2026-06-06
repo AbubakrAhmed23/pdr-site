@@ -8,6 +8,9 @@ import { pickField, pickArray } from "@/lib/locale-field";
 import { formatCurrency } from "@/lib/utils";
 import { Clock, Check } from "lucide-react";
 
+// DB içeriğine bağlı: istek anında render (admin düzenlemeleri anında yansır).
+export const dynamic = "force-dynamic";
+
 export default async function ServicesPage({
   params,
 }: {

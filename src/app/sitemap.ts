@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { getPublishedPosts } from "@/lib/site-data";
 
+// Blog yazılarına bağlı olduğu için istek anında üretilir (build-time DB bağımlılığı yok).
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const staticPaths = ["", "/about", "/services", "/faq", "/contact", "/blog"];

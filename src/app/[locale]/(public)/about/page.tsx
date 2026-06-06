@@ -7,6 +7,9 @@ import { getCounselorProfile, getSiteContent } from "@/lib/site-data";
 import { pickField, pickArray } from "@/lib/locale-field";
 import { Check } from "lucide-react";
 
+// DB içeriğine bağlı: istek anında render (admin düzenlemeleri anında yansır).
+export const dynamic = "force-dynamic";
+
 export default async function AboutPage({
   params,
 }: {
