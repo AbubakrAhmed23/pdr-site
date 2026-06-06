@@ -93,6 +93,32 @@
     "empty": "Henüz yazı yayınlanmadı.",
     "backToBlog": "Tüm yazılar"
   },
+  "Booking": {
+    "title": "Randevu Al",
+    "subtitle": "Size uygun paketi ve saati seçin",
+    "selectPackage": "Hizmet paketi",
+    "selectSlot": "Uygun saatler",
+    "noSlots": "Şu anda uygun saat bulunmuyor. Lütfen daha sonra tekrar kontrol edin veya WhatsApp'tan yazın.",
+    "note": "Eklemek istediğiniz not (opsiyonel)",
+    "notePlaceholder": "Görüşmeyle ilgili kısaca paylaşmak istedikleriniz...",
+    "submit": "Randevu talebi oluştur",
+    "free": "Ücretsiz",
+    "paymentNote": "Ücretli seanslarda ödeme, randevu talebinizin ardından WhatsApp üzerinden koordine edilir.",
+    "successTitle": "Randevu talebiniz alındı",
+    "successBody": "Talebiniz danışmana iletildi. Ücretli seanslarda ödemeyi tamamlamak için aşağıdaki WhatsApp butonunu kullanın.",
+    "statusLabel": "Durum",
+    "whatsappCta": "WhatsApp'tan ödemeyi tamamla",
+    "whatsappMessage": "Merhaba, {date} tarihli {package} randevum için ödeme yapmak istiyorum.",
+    "viewDashboard": "Randevularıma git",
+    "freeConfirmedNote": "Ücretsiz tanışma görüşmeniz onay için danışmana iletildi."
+  },
+  "AppointmentStatus": {
+    "REQUESTED": "Talep edildi",
+    "CONFIRMED": "Onaylandı",
+    "COMPLETED": "Tamamlandı",
+    "CANCELLED": "İptal edildi",
+    "NO_SHOW": "Gelinmedi"
+  },
   "Crisis": {
     "title": "Acil bir durumda mısınız?",
     "body": "Kendinize veya bir başkasına zarar verme düşünceniz varsa lütfen vakit kaybetmeden 112 Acil Servis'i arayın. Bu platform acil/kriz müdahalesi için uygun değildir.",

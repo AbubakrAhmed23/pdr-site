@@ -93,6 +93,32 @@
     "empty": "No posts published yet.",
     "backToBlog": "All posts"
   },
+  "Booking": {
+    "title": "Book a Session",
+    "subtitle": "Choose a package and a time that suits you",
+    "selectPackage": "Service package",
+    "selectSlot": "Available times",
+    "noSlots": "No available times right now. Please check back later or message us on WhatsApp.",
+    "note": "Note (optional)",
+    "notePlaceholder": "Anything you'd like to briefly share about the session...",
+    "submit": "Request appointment",
+    "free": "Free",
+    "paymentNote": "For paid sessions, payment is coordinated via WhatsApp after your appointment request.",
+    "successTitle": "Your appointment request was received",
+    "successBody": "Your request has been sent to the counselor. For paid sessions, use the WhatsApp button below to complete payment.",
+    "statusLabel": "Status",
+    "whatsappCta": "Complete payment on WhatsApp",
+    "whatsappMessage": "Hello, I'd like to pay for my {package} appointment on {date}.",
+    "viewDashboard": "Go to my appointments",
+    "freeConfirmedNote": "Your free intro call has been sent to the counselor for confirmation."
+  },
+  "AppointmentStatus": {
+    "REQUESTED": "Requested",
+    "CONFIRMED": "Confirmed",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled",
+    "NO_SHOW": "No-show"
+  },
   "Crisis": {
     "title": "Are you in an emergency?",
     "body": "If you have thoughts of harming yourself or others, please call emergency services (112) immediately. This platform is not suitable for emergency or crisis intervention.",

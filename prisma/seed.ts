@@ -14,27 +14,31 @@ async function main() {
   const passwordHash = await bcrypt.hash(ownerPassword, 12);
   const owner = await prisma.user.upsert({
     where: { email: ownerEmail },
-    update: { role: "ADMIN" },
+    update: { role: "ADMIN", name: "Ennur Pupuş" },
     create: {
       email: ownerEmail,
-      name: "Danışman",
+      name: "Ennur Pupuş",
       role: "ADMIN",
       passwordHash,
       locale: "TR",
     },
   });
 
+  const profileData = {
+    titleTr: "Psikolojik Danışman (PDR)",
+    titleEn: "Psychological Counselor (Guidance & Counseling)",
+    bioTr:
+      "Ben Ennur Pupuş. Kosova kökenliyim. Lise eğitimimi Türkiye Diyanet Vakfı (TDV) bursuyla ŞMK Lisesi'nde tamamladıktan sonra Marmara Üniversitesi Psikolojik Danışmanlık ve Rehberlik (PDR) bölümünde lisans ve yüksek lisans eğitimimi tamamladım. Bireylerin kendilerini daha iyi anlamalarına ve günlük yaşam zorluklarıyla başa çıkmalarına çevrimiçi psikolojik danışmanlık ve rehberlik yoluyla eşlik ediyorum.",
+    bioEn:
+      "I'm Ennur Pupuş. Originally from Kosovo, I completed my high-school education in Türkiye on a Turkish Religious Foundation (TDV) scholarship at ŞMK High School, and went on to earn my bachelor's and master's degrees in Guidance & Psychological Counseling at Marmara University. Through online counseling and guidance I accompany individuals as they better understand themselves and navigate everyday challenges.",
+  };
+
   await prisma.counselorProfile.upsert({
     where: { userId: owner.id },
-    update: {},
+    update: profileData,
     create: {
       userId: owner.id,
-      titleTr: "Psikolojik Danışman (PDR)",
-      titleEn: "Psychological Counselor (Guidance & Counseling)",
-      bioTr:
-        "Marmara Üniversitesi Psikolojik Danışmanlık ve Rehberlik lisans ve yüksek lisans mezunu. Bireysel danışmanlık ve rehberlik alanında çevrimiçi hizmet sunmaktadır.",
-      bioEn:
-        "Graduate of Marmara University's Guidance & Psychological Counseling (BA & MA). Offers online individual counseling and guidance.",
+      ...profileData,
       specialtiesTr: [
         "Bireysel danışmanlık",
         "Kaygı ve stres",
@@ -97,9 +101,9 @@ async function main() {
     {
       key: "about.body",
       valueTr:
-        "Merhaba, ben bir psikolojik danışmanım. Marmara Üniversitesi PDR lisans ve yüksek lisans eğitimimi tamamladım. Çevrimiçi bireysel danışmanlık ve rehberlik hizmeti sunuyorum.",
+        "Çevrimiçi psikolojik danışmanlık ve rehberlik ile güvenli, gizli ve yargısız bir alanda yanınızdayım.",
       valueEn:
-        "Hello, I'm a psychological counselor. I completed my BA and MA in Guidance & Psychological Counseling at Marmara University. I offer online individual counseling and guidance.",
+        "With online psychological counseling and guidance, I'm here for you in a safe, confidential and non-judgmental space.",
     },
     {
       key: "contact.body",
@@ -112,7 +116,7 @@ async function main() {
   for (const c of content) {
     await prisma.siteContent.upsert({
       where: { key: c.key },
-      update: {},
+      update: { valueTr: c.valueTr, valueEn: c.valueEn },
       create: c,
     });
   }
