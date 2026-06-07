@@ -11,10 +11,10 @@ export default async function PublicLayout({
   const user = await getCurrentUser();
   return (
     <>
-      <CrisisBanner />
       <SiteNavbar user={user ? { name: user.name, role: user.role } : null} />
       <main className="flex-1">{children}</main>
       <SiteFooter />
+      <CrisisBanner />
     </>
   );
 }

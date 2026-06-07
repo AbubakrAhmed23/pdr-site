@@ -10,7 +10,7 @@ export function CrisisBanner() {
   if (!open) return null;
 
   return (
-    <div className="bg-destructive/10 text-destructive-foreground">
+    <div className="border-t border-destructive/20 bg-destructive/5 text-destructive-foreground">
       <div className="mx-auto flex max-w-6xl items-start gap-3 px-4 py-2 text-sm text-destructive sm:px-6 lg:px-8">
         <AlertTriangle className="mt-0.5 shrink-0" />
         <p className="flex-1">
