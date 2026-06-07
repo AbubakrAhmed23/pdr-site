@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { getSiteUrl } from "@/lib/site-url";
 import "../globals.css";
 
 const inter = Inter({
@@ -22,12 +23,38 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Meta" });
+  const base = getSiteUrl();
+  const title = t("title");
+  const description = t("description");
+
   return {
+    metadataBase: new URL(base),
     title: {
-      default: t("title"),
-      template: `%s · ${t("title")}`,
+      default: title,
+      template: `%s · ${title}`,
     },
-    description: t("description"),
+    description,
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        tr: "/tr",
+        en: "/en",
+        "x-default": "/tr",
+      },
+    },
+    openGraph: {
+      type: "website",
+      siteName: "PDR Danışmanlık",
+      title,
+      description,
+      url: `/${locale}`,
+      locale: locale === "en" ? "en_US" : "tr_TR",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

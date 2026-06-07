@@ -1,5 +1,8 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { getSiteUrl } from "@/lib/site-url";
+import { getCounselorProfile } from "@/lib/site-data";
+import { pickField } from "@/lib/locale-field";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,8 +29,31 @@ export default async function HomePage({
   ];
   const steps = [t("how1"), t("how2"), t("how3"), t("how4")];
 
+  const base = getSiteUrl();
+  const profile = await getCounselorProfile();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "PDR Danışmanlık",
+    description: t("heroSubtitle"),
+    url: `${base}/${locale}`,
+    areaServed: "TR",
+    availableLanguage: ["tr", "en"],
+    ...(profile && {
+      provider: {
+        "@type": "Person",
+        name: profile.user?.name ?? "Ennur Pupuş",
+        jobTitle: pickField(profile, locale, "title"),
+      },
+    }),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-b from-secondary/50 to-background">
         <Container className="py-20 sm:py-28">
