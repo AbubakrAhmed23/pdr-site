@@ -42,7 +42,7 @@ export default async function HomePage({
     ...(profile && {
       provider: {
         "@type": "Person",
-        name: profile.user?.name ?? "Ennur Pupuş",
+        name: profile.user?.name ?? "Ennur Pupus",
         jobTitle: pickField(profile, locale, "title"),
       },
     }),

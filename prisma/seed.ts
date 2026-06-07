@@ -14,10 +14,10 @@ async function main() {
   const passwordHash = await bcrypt.hash(ownerPassword, 12);
   const owner = await prisma.user.upsert({
     where: { email: ownerEmail },
-    update: { role: "ADMIN", name: "Ennur Pupuş" },
+    update: { role: "ADMIN", name: "Ennur Pupus" },
     create: {
       email: ownerEmail,
-      name: "Ennur Pupuş",
+      name: "Ennur Pupus",
       role: "ADMIN",
       passwordHash,
       locale: "TR",
@@ -28,9 +28,9 @@ async function main() {
     titleTr: "Psikolojik Danışman (PDR)",
     titleEn: "Psychological Counselor (Guidance & Counseling)",
     bioTr:
-      "Ben Ennur Pupuş. Kosova kökenliyim. Lise eğitimimi Türkiye Diyanet Vakfı (TDV) bursuyla ŞMK Lisesi'nde tamamladıktan sonra Marmara Üniversitesi Psikolojik Danışmanlık ve Rehberlik (PDR) bölümünde lisans ve yüksek lisans eğitimimi tamamladım. Bireylerin kendilerini daha iyi anlamalarına ve günlük yaşam zorluklarıyla başa çıkmalarına çevrimiçi psikolojik danışmanlık ve rehberlik yoluyla eşlik ediyorum.",
+      "Ben Ennur Pupus. Kosova kökenliyim. Lise eğitimimi Türkiye Diyanet Vakfı (TDV) bursuyla ŞMK Lisesi'nde tamamladıktan sonra Marmara Üniversitesi Psikolojik Danışmanlık ve Rehberlik (PDR) bölümünde lisans ve yüksek lisans eğitimimi tamamladım. Bireylerin kendilerini daha iyi anlamalarına ve günlük yaşam zorluklarıyla başa çıkmalarına çevrimiçi psikolojik danışmanlık ve rehberlik yoluyla eşlik ediyorum.",
     bioEn:
-      "I'm Ennur Pupuş. Originally from Kosovo, I completed my high-school education in Türkiye on a Turkish Religious Foundation (TDV) scholarship at ŞMK High School, and went on to earn my bachelor's and master's degrees in Guidance & Psychological Counseling at Marmara University. Through online counseling and guidance I accompany individuals as they better understand themselves and navigate everyday challenges.",
+      "I'm Ennur Pupus. Originally from Kosovo, I completed my high-school education in Türkiye on a Turkish Religious Foundation (TDV) scholarship at ŞMK High School, and went on to earn my bachelor's and master's degrees in Guidance & Psychological Counseling at Marmara University. Through online counseling and guidance I accompany individuals as they better understand themselves and navigate everyday challenges.",
   };
 
   await prisma.counselorProfile.upsert({
