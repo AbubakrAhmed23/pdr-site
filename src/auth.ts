@@ -4,6 +4,7 @@ import type { Role } from "@/generated/prisma/enums";
 import { prisma } from "@/lib/prisma";
 import { verifyPassword } from "@/lib/password";
 import { loginSchema } from "@/lib/validations";
+import { logAudit, getClientIp } from "@/lib/audit";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
@@ -55,6 +56,44 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.role = token.role as Role;
       }
       return session;
+    },
+  },
+  // KVKK: erişim (giriş/çıkış) kayıtları. Hata olursa oturum akışı bozulmaz.
+  events: {
+    async signIn({ user }) {
+      if (!user?.id) return;
+      const ip = await getClientIp();
+      try {
+        await prisma.user.update({
+          where: { id: user.id },
+          data: { lastLoginAt: new Date() },
+        });
+      } catch {
+        // son giriş damgası yazılamazsa girişi engelleme
+      }
+      await logAudit({
+        userId: user.id,
+        action: "LOGIN",
+        entity: "User",
+        entityId: user.id,
+        metadata: ip ? { ip } : undefined,
+      });
+    },
+    async signOut(message) {
+      // jwt stratejisinde olay `{ token }` ile gelir.
+      const userId =
+        "token" in message && message.token
+          ? ((message.token as { id?: string }).id ?? null)
+          : null;
+      if (!userId) return;
+      const ip = await getClientIp();
+      await logAudit({
+        userId,
+        action: "LOGOUT",
+        entity: "User",
+        entityId: userId,
+        metadata: ip ? { ip } : undefined,
+      });
     },
   },
 });
