@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/rbac";
+import { requireAuth } from "@/lib/rbac";
 import { SiteNavbar } from "@/components/site-navbar";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -7,10 +7,12 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getCurrentUser();
+  // Yetki kontrolü layout'ta yapılır: akış başlamadan önce çalıştığı için
+  // oturumsuz ziyaretçi boş iskelet görmeden gerçek HTTP yönlendirmesi alır.
+  const user = await requireAuth();
   return (
     <>
-      <SiteNavbar user={user ? { name: user.name, role: user.role } : null} />
+      <SiteNavbar user={{ name: user.name, role: user.role }} />
       <main className="flex-1">{children}</main>
       <SiteFooter />
     </>
