@@ -102,7 +102,7 @@ export function AssessmentFlow({ locale, gad7, phq9, options }: Props) {
       <Card className="mx-auto max-w-2xl">
         <CardContent className="space-y-5 pt-6">
           <p className="text-muted-foreground">{t("intro")}</p>
-          <div className="rounded-lg border border-border bg-secondary/30 p-4">
+          <div className="rounded-xl border-l-4 border-accent bg-accent-soft/50 p-4">
             <h2 className="flex items-center gap-2 font-semibold">
               <ShieldCheck className="size-5 text-primary" />
               {t("consentTitle")}
@@ -139,7 +139,7 @@ export function AssessmentFlow({ locale, gad7, phq9, options }: Props) {
       <div className="space-y-4">
         <h2 className="text-lg font-semibold text-primary">{t(titleKey)}</h2>
         {items.map((q, i) => (
-          <div key={i} className="rounded-lg border border-border bg-card p-4">
+          <div key={i} className="rounded-xl border border-border-soft bg-card p-4 shadow-card">
             <p className="mb-3 text-sm font-medium">
               {i + 1}. {q}
             </p>

@@ -57,7 +57,7 @@ export default async function BookingPage({
                 return (
                   <label
                     key={p.id}
-                    className="flex cursor-pointer items-center gap-3 rounded-lg border border-border bg-card p-4 has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary"
+                    className="flex cursor-pointer items-center gap-3 rounded-xl border border-border-soft bg-card p-4 shadow-card transition-all duration-200 hover:border-primary/30 has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary"
                   >
                     <input
                       type="radio"
@@ -91,7 +91,7 @@ export default async function BookingPage({
                 {slots.map((slot, i) => (
                   <label
                     key={slot.id}
-                    className="flex cursor-pointer items-center gap-2 rounded-lg border border-border bg-card p-3 text-sm has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+                    className="flex cursor-pointer items-center gap-2 rounded-xl border border-border-soft bg-card p-3 text-sm transition-all duration-200 hover:border-primary/30 has-[:checked]:border-primary has-[:checked]:bg-primary/5"
                   >
                     <input
                       type="radio"

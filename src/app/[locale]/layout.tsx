@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -8,8 +8,17 @@ import { getSiteUrl } from "@/lib/site-url";
 import "../globals.css";
 
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-inter",
   subsets: ["latin", "latin-ext"],
+});
+
+// Başlıklar için sıcak, karakterli display serif. SOFT/opsz eksenleri
+// globals.css içinde ayarlanır (yumuşak terminaller, display optik boy).
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "latin-ext"],
+  axes: ["SOFT", "opsz"],
+  display: "swap",
 });
 
 export function generateStaticParams() {
@@ -73,7 +82,10 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${inter.variable} h-full`}>
+    <html
+      lang={locale}
+      className={`${inter.variable} ${fraunces.variable} h-full`}
+    >
       <body className="flex min-h-full flex-col bg-background text-foreground antialiased">
         <NextIntlClientProvider messages={messages}>
           {children}

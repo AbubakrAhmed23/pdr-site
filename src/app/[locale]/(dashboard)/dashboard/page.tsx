@@ -46,11 +46,11 @@ export default async function DashboardPage({
   return (
     <>
       <PageHeader title={t("title")} subtitle={t("welcome", { name: user.name ?? "" })} />
-      <Container className="space-y-10 py-12">
+      <Container className="space-y-12 py-16">
         {/* Randevular */}
         <section>
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-xl font-semibold">{t("myAppointments")}</h2>
+            <h2 className="text-2xl font-semibold">{t("myAppointments")}</h2>
             <Link href="/booking">
               <Button size="sm">
                 <CalendarPlus className="size-4" />
@@ -60,7 +60,9 @@ export default async function DashboardPage({
           </div>
 
           {appointments.length === 0 ? (
-            <p className="text-muted-foreground">{t("noAppointments")}</p>
+            <div className="rounded-2xl border border-dashed border-border bg-card/60 px-6 py-12 text-center">
+              <p className="text-sm text-muted-foreground">{t("noAppointments")}</p>
+            </div>
           ) : (
             <div className="space-y-3">
               {appointments.map((appt) => {
@@ -89,7 +91,7 @@ export default async function DashboardPage({
                     : null;
 
                 return (
-                  <Card key={appt.id}>
+                  <Card key={appt.id} className="card-lift">
                     <CardContent className="flex flex-wrap items-center justify-between gap-3 pt-6">
                       <div>
                         <p className="font-medium">{packageLabel}</p>
@@ -97,7 +99,7 @@ export default async function DashboardPage({
                           {fmt.format(appt.startsAt)}
                         </p>
                         <p className="mt-1 text-xs">
-                          <span className="rounded-full bg-secondary px-2 py-0.5 font-medium">
+                          <span className="rounded-full bg-secondary px-2.5 py-1 font-medium text-secondary-foreground">
                             {tStatus(appt.status)}
                           </span>
                           {appt.payment && (
@@ -155,7 +157,7 @@ export default async function DashboardPage({
         {/* Ön değerlendirmeler */}
         <section>
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-xl font-semibold">{t("assessmentsTitle")}</h2>
+            <h2 className="text-2xl font-semibold">{t("assessmentsTitle")}</h2>
             <Link href="/assessment">
               <Button size="sm" variant="outline">
                 <Sparkles className="size-4" />
@@ -164,11 +166,13 @@ export default async function DashboardPage({
             </Link>
           </div>
           {assessments.length === 0 ? (
-            <p className="text-muted-foreground">{t("noAssessments")}</p>
+            <div className="rounded-2xl border border-dashed border-border bg-card/60 px-6 py-12 text-center">
+              <p className="text-sm text-muted-foreground">{t("noAssessments")}</p>
+            </div>
           ) : (
             <div className="space-y-3">
               {assessments.map((a) => (
-                <Card key={a.id}>
+                <Card key={a.id} className="card-lift">
                   <CardContent className="flex items-center justify-between pt-6">
                     <div>
                       <p className="font-medium">
@@ -181,7 +185,7 @@ export default async function DashboardPage({
                       )}
                     </div>
                     {a.riskLevel && (
-                      <span className="rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium">
+                      <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent-foreground">
                         {a.riskLevel}
                       </span>
                     )}
@@ -194,7 +198,7 @@ export default async function DashboardPage({
 
         {/* Hesap */}
         <section>
-          <h2 className="mb-4 text-xl font-semibold">{t("accountTitle")}</h2>
+          <h2 className="mb-4 text-2xl font-semibold">{t("accountTitle")}</h2>
           <Card>
             <CardContent className="pt-6 text-sm">
               <p className="font-medium">{user.name}</p>

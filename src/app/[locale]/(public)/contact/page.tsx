@@ -29,7 +29,7 @@ export default async function ContactPage({
   return (
     <>
       <PageHeader title={t("title")} subtitle={t("subtitle")} />
-      <Container className="py-12 sm:py-16">
+      <Container className="py-16 sm:py-20">
         <div className="mx-auto max-w-2xl space-y-6">
           {body && <p className="text-muted-foreground">{body}</p>}
 
@@ -39,9 +39,9 @@ export default async function ContactPage({
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary"
+                className="reveal card-lift flex items-center gap-3.5 rounded-2xl border border-border-soft bg-card p-5 shadow-card hover:border-primary/30"
               >
-                <span className="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <span className="icon-gradient flex size-11 shrink-0 items-center justify-center rounded-xl text-primary">
                   <MessageCircle className="size-5" />
                 </span>
                 <span>
@@ -56,9 +56,9 @@ export default async function ContactPage({
             {settings.contactEmail && (
               <a
                 href={`mailto:${settings.contactEmail}`}
-                className="flex items-center gap-3 rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary"
+                className="reveal card-lift flex items-center gap-3.5 rounded-2xl border border-border-soft bg-card p-5 shadow-card hover:border-primary/30"
               >
-                <span className="flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <span className="icon-gradient flex size-11 shrink-0 items-center justify-center rounded-xl text-primary">
                   <Mail className="size-5" />
                 </span>
                 <span>

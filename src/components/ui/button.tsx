@@ -3,19 +3,20 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
+  // 180ms yumuşak geçiş + hover'da hafif scale (dolu varyantlarda) ve gölge derinleşmesi.
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none motion-reduce:hover:scale-100 [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
+          "bg-primary text-primary-foreground shadow-pill hover:bg-primary/90 hover:shadow-cta hover:scale-[1.02] active:scale-100",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/75 hover:shadow-pill hover:scale-[1.02] active:scale-100",
         outline:
-          "border border-input bg-transparent hover:bg-secondary hover:text-secondary-foreground",
+          "border border-input bg-card/60 hover:bg-secondary hover:text-secondary-foreground hover:shadow-pill hover:scale-[1.02] active:scale-100",
         ghost: "hover:bg-secondary hover:text-secondary-foreground",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground shadow-pill hover:bg-destructive/90 hover:shadow-cta hover:scale-[1.02] active:scale-100",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

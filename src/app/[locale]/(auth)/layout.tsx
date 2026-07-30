@@ -8,9 +8,9 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-secondary/40 to-background">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-secondary/55 to-background">
       <header className="flex items-center justify-between px-6 py-5">
-        <Link href="/" className="flex items-center gap-2 font-semibold text-primary">
+        <Link href="/" className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-primary">
           <HeartHandshake className="size-6" />
           PDR Danışmanlık
         </Link>

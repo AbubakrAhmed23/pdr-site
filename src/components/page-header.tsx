@@ -8,16 +8,18 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <div className="border-b border-border bg-secondary/30">
-      <Container className="py-12 sm:py-16">
+    <div className="relative overflow-hidden border-b border-border-soft bg-gradient-to-b from-secondary/55 to-background">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-20 -top-24 size-72 rounded-full bg-accent/12 blur-3xl"
+      />
+      <Container className="relative py-14 sm:py-18">
         {subtitle && (
-          <p className="text-sm font-medium uppercase tracking-wide text-primary">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-foreground">
             {subtitle}
           </p>
         )}
-        <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">
-          {title}
-        </h1>
+        <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">{title}</h1>
       </Container>
     </div>
   );

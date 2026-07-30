@@ -22,9 +22,11 @@ export default async function BlogPage({
   return (
     <>
       <PageHeader title={t("title")} subtitle={t("subtitle")} />
-      <Container className="py-12 sm:py-16">
+      <Container className="py-16 sm:py-20">
         {posts.length === 0 ? (
-          <p className="text-muted-foreground">{t("empty")}</p>
+          <div className="rounded-2xl border border-dashed border-border bg-card/60 px-6 py-16 text-center">
+            <p className="text-sm text-muted-foreground">{t("empty")}</p>
+          </div>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => {
@@ -34,18 +36,19 @@ export default async function BlogPage({
                 <Link
                   key={post.id}
                   href={`/blog/${post.slug}`}
-                  className="group flex flex-col rounded-xl border border-border bg-card p-6 shadow-sm transition-colors hover:border-primary"
+                  className="reveal card-lift group flex flex-col rounded-2xl border border-border-soft bg-card p-6 shadow-card hover:border-primary/30"
                 >
-                  <h2 className="font-semibold group-hover:text-primary">
+                  <h2 className="text-lg font-semibold transition-colors group-hover:text-primary">
                     {title}
                   </h2>
                   {excerpt && (
-                    <p className="mt-2 flex-1 text-sm text-muted-foreground">
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                       {excerpt}
                     </p>
                   )}
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                    {t("readMore")} <ArrowRight className="size-4" />
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                    {t("readMore")}
+                    <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </span>
                 </Link>
               );

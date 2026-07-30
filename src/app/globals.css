@@ -2,78 +2,122 @@
 
 /*
   PDR Online Danışmanlık — tasarım sistemi.
-  Sakin, güven veren palet: yumuşak adaçayı/teal yeşili + sıcak nötr tonlar.
+  Sıcak ama profesyonel palet: sakin adaçayı/teal yeşili (ana renk, korunur)
+  + sıcak krem zemin + terracotta ikincil vurgu + lacivert-antrasit başlık rengi.
+  Tüm renkler değişken; bileşenlerde hardcode renk kullanılmaz.
 */
 
 :root {
-  --background: oklch(0.99 0.005 95);
-  --foreground: oklch(0.27 0.02 170);
+  /* Zemin: saf beyaz yerine çok hafif sıcak krem */
+  --background: #faf7f2;
+  /* Bölüm ritmi için ikinci zemin tonu */
+  --background-alt: #ffffff;
+  --foreground: #24333a;
+  /* Başlık/footer için koyu lacivert-antrasit */
+  --heading: #0f2c42;
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.27 0.02 170);
+  --card: #ffffff;
+  --card-foreground: #24333a;
 
+  /* Ana marka yeşili — mevcut CTA rengi korunuyor */
   --primary: oklch(0.55 0.07 175);
   --primary-foreground: oklch(0.99 0.01 175);
+  --primary-deep: oklch(0.42 0.06 175);
 
-  --secondary: oklch(0.95 0.02 165);
-  --secondary-foreground: oklch(0.35 0.04 175);
+  --secondary: #e8f0ea;
+  --secondary-foreground: #2c4f4a;
 
-  --muted: oklch(0.96 0.008 120);
-  --muted-foreground: oklch(0.52 0.02 170);
+  --muted: #f2ece3;
+  --muted-foreground: #5c6a70;
 
-  --accent: oklch(0.9 0.05 80);
-  --accent-foreground: oklch(0.32 0.05 70);
+  /* İkincil vurgu: sıcak terracotta / kum. CTA'da değil; rozet,
+     ikon zemini ve alıntı kutularında kullanılır. */
+  --accent: #d98b62;
+  --accent-strong: #c4744b;
+  --accent-soft: #f7e7dc;
+  --accent-foreground: #7c4326;
 
   --destructive: oklch(0.58 0.18 25);
   --destructive-foreground: oklch(0.99 0.01 25);
 
-  --border: oklch(0.9 0.01 160);
-  --input: oklch(0.9 0.01 160);
+  --border: #e8e0d5;
+  --border-soft: #f0e9df;
+  --input: #ddd5c9;
   --ring: oklch(0.55 0.07 175);
 
-  --radius: 0.75rem;
+  --radius: 0.875rem;
+
+  /* Not: tema anahtarlarıyla (--shadow-*) aynı ada sahip olmamalı,
+     yoksa var() kendine referans verir. */
+  --elev-card: 0 4px 20px rgba(15, 44, 66, 0.05);
+  --elev-card-hover: 0 14px 34px rgba(15, 44, 66, 0.1);
+  --elev-pill: 0 2px 10px rgba(15, 44, 66, 0.07);
+  --elev-cta: 0 8px 24px rgba(15, 44, 66, 0.14);
 }
 
 .dark {
   --background: oklch(0.2 0.02 175);
+  --background-alt: oklch(0.24 0.02 175);
   --foreground: oklch(0.95 0.01 150);
+  --heading: oklch(0.97 0.01 150);
   --card: oklch(0.24 0.02 175);
   --card-foreground: oklch(0.95 0.01 150);
   --primary: oklch(0.7 0.09 170);
   --primary-foreground: oklch(0.2 0.02 175);
+  --primary-deep: oklch(0.55 0.07 175);
   --secondary: oklch(0.3 0.03 175);
   --secondary-foreground: oklch(0.95 0.01 150);
   --muted: oklch(0.3 0.02 175);
-  --muted-foreground: oklch(0.7 0.02 160);
-  --accent: oklch(0.35 0.05 80);
-  --accent-foreground: oklch(0.95 0.02 80);
+  --muted-foreground: oklch(0.72 0.02 160);
+  --accent: oklch(0.68 0.1 45);
+  --accent-strong: oklch(0.6 0.12 45);
+  --accent-soft: oklch(0.33 0.05 45);
+  --accent-foreground: oklch(0.92 0.04 60);
   --destructive: oklch(0.6 0.18 25);
   --destructive-foreground: oklch(0.98 0.01 25);
   --border: oklch(0.32 0.02 175);
+  --border-soft: oklch(0.28 0.02 175);
   --input: oklch(0.32 0.02 175);
   --ring: oklch(0.7 0.09 170);
+
+  --elev-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --elev-card-hover: 0 14px 34px rgba(0, 0, 0, 0.4);
+  --elev-pill: 0 2px 10px rgba(0, 0, 0, 0.25);
+  --elev-cta: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
   --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
+  --color-border-soft: var(--border-soft);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --shadow-card: var(--elev-card);
+  --shadow-card-hover: var(--elev-card-hover);
+  --shadow-pill: var(--elev-pill);
+  --shadow-cta: var(--elev-cta);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -81,13 +125,153 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-* {
-  border-color: var(--border);
+/*
+  Base katmanı: utility sınıfları (text-primary, tracking-* vb.) bu kuralları
+  ezebilsin diye @layer base içinde tanımlanır.
+*/
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /*
+    Tipografi: bölüm başlıkları sıcak/karakterli serif (Fraunces),
+    gövde metni mevcut sans-serif (Inter). h3 ve altı sans kalır —
+    serif/sans ayrımı hiyerarşiyi güçlendirir.
+  */
+  h1,
+  h2 {
+    font-family: var(--font-fraunces), ui-serif, Georgia, serif;
+    font-variation-settings: "SOFT" 40, "opsz" 48;
+    letter-spacing: -0.025em;
+    color: var(--heading);
+  }
+
+  h1 {
+    letter-spacing: -0.035em;
+  }
+
+  /* `font-display` utility'si (--font-display teması) ile birlikte
+     aynı optik ayarlar uygulansın. */
+  .font-display {
+    font-variation-settings: "SOFT" 40, "opsz" 48;
+  }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
+/* — Mikro-interaksiyonlar — */
+
+@keyframes pdr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Sayfa açılışında yumuşak giriş (hero vb.) */
+.animate-rise {
+  animation: pdr-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Scroll ile görünüme girdikçe fade-in + translateY.
+   Scroll-driven animation destekleyen tarayıcılarda çalışır;
+   desteklemeyende içerik normal şekilde görünür (JS/kütüphane gerekmez). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: pdr-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 20%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise {
+    animation: none;
+  }
+}
+
+/* Kriz toast'ı — yandan kayarak girer/çıkar */
+@keyframes pdr-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(110%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pdr-toast-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(110%);
+  }
+}
+
+.toast-in {
+  animation: pdr-toast-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.toast-out {
+  animation: pdr-toast-out 0.35s ease-in both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast-in {
+    animation: none;
+  }
+  .toast-out {
+    animation: pdr-fade-out 0.2s linear both;
+  }
+}
+
+@keyframes pdr-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Kart yükselme etkisi */
+.card-lift {
+  transition:
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-lift:hover {
+    transform: none;
+  }
+}
+
+/* İkon kutuları: yeşilden terracottaya yumuşak geçiş */
+.icon-gradient {
+  background-image: linear-gradient(
+    140deg,
+    color-mix(in oklab, var(--primary) 16%, transparent),
+    color-mix(in oklab, var(--accent) 26%, transparent)
+  );
 }

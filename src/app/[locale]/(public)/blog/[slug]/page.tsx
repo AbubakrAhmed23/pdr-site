@@ -37,7 +37,7 @@ export default async function BlogPostPage({
   const content = pickField(post, locale, "content");
 
   return (
-    <Container className="py-12 sm:py-16">
+    <Container className="py-16 sm:py-20">
       <article className="mx-auto max-w-2xl">
         <Link
           href="/blog"
@@ -45,7 +45,7 @@ export default async function BlogPostPage({
         >
           <ArrowLeft className="size-4" /> {t("backToBlog")}
         </Link>
-        <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="mt-6 text-3xl font-semibold sm:text-4xl">
           {title}
         </h1>
         {post.publishedAt && (
@@ -55,7 +55,7 @@ export default async function BlogPostPage({
             }).format(post.publishedAt)}
           </p>
         )}
-        <div className="mt-8 whitespace-pre-line leading-relaxed text-foreground">
+        <div className="mt-8 whitespace-pre-line text-[1.05rem] leading-[1.75] text-foreground">
           {content}
         </div>
       </article>
